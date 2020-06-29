@@ -6,6 +6,7 @@ namespace api\modules\api\services;
 
 use api\modules\api\cache\ArticleCacheInterface;
 use api\modules\api\cache\CategoryCacheInterface;
+use api\modules\api\exceptions\NotFoundArticleException;
 use api\modules\api\exceptions\NotFoundCategoryException;
 use api\modules\api\repository\ArticleRepositoryInterface;
 use api\modules\api\repository\CategoryRepositoryInterface;
@@ -37,9 +38,10 @@ class ArticleService implements ArticleServiceInterface
     public function createArticle(array $params): Article
     {
         if (isset($params['category_id'])) {
-            $category = $this->categoryRepository->findOneById($params['category_id']);
+            $category = $this->categoryRepository->findOneById((int)$params['category_id']);
             $article = $this->repository->createArticle($params);
             $article->setCategory($category);
+            $this->repository->save($article);
             $this->cache->setArticle($article);
             $category->incrementArticle();
             $this->categoryRepository->save($category);
@@ -54,6 +56,10 @@ class ArticleService implements ArticleServiceInterface
     public function updateArticle(string $alias, array $params): Article
     {
         $article = $this->repository->findOneByAlias($alias);
+        if (isset($params['category_id'])) {
+            $category = $this->categoryRepository->findOneById($params['category_id']);
+            $article->setCategory($category);
+        }
         $this->repository->update($article, $params);
         $this->cache->setArticle($article);
 
@@ -73,7 +79,7 @@ class ArticleService implements ArticleServiceInterface
     {
         try {
             return $this->cache->getArticle($alias);
-        } catch (NotFoundCategoryException $e) {
+        } catch (NotFoundArticleException $e) {
             return $this->repository->findOneByAlias($alias);
         }
     }

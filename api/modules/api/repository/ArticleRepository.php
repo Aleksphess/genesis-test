@@ -18,7 +18,6 @@ class ArticleRepository extends ActiveQuery implements ArticleRepositoryInterfac
          * @var Article $article
          */
         $article = $this->where(['alias' => $alias])->one();
-
         if (null === $article) {
             throw new NotFoundArticleException(\sprintf('Article not found by alias %s', $alias));
         }

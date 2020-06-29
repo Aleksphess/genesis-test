@@ -1,0 +1,9 @@
+# after clone adjust your urls
+# and add to git ignore!
+modules:
+  config:
+    PhpBrowser:
+      url: 'http://localhost.dev:8080'
+    REST:
+      depends: PhpBrowser
+      url: 'http://localhost'

@@ -10,7 +10,7 @@ use api\modules\api\services\ArticleServiceInterface;
 use api\modules\api\validation\ArticleCreateScenario;
 use api\modules\api\validation\ArticleUpdateScenario;
 use yii\base\Module;
-use yii\base\Response;
+use yii\web\Response;
 use yii\data\DataProviderInterface;
 use yii\web\NotFoundHttpException;
 use yii\web\Request;
@@ -88,6 +88,7 @@ class ArticleController extends Controller
     {
         $this->articleCreateScenario->validateRequest($this->request);
         $params = $this->request->getBodyParams();
+        $this->response->setStatusCode(201);
 
         return $this->service->createArticle($params);
     }

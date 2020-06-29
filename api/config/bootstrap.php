@@ -65,7 +65,8 @@ Yii::$container->set(
         return new \api\modules\api\services\ArticleService(
             Yii::$container->get(\api\modules\api\repository\ArticleRepository::class),
             Yii::$container->get(\api\modules\api\repository\CategoryRepository::class),
-            Yii::$container->get(\api\modules\api\cache\ArticleCache::class)
+            Yii::$container->get(\api\modules\api\cache\ArticleCache::class),
+            Yii::$container->get(\api\modules\api\cache\CategoryCache::class)
         );
     }
 );

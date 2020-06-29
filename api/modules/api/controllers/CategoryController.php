@@ -81,13 +81,14 @@ class CategoryController extends Controller
     public function actionDelete(string $id): void
     {
         $this->service->deleteCategory($id);
-        $this->response->statusCode = 204;
+        $this->response->setStatusCode(204);
     }
 
     public function actionCreate(): Category
     {
         $this->createCategoryScenario->validateRequest($this->request);
         $params = $this->request->getBodyParams();
+        $this->response->setStatusCode(201);
 
         return $this->service->createCategory($params);
     }

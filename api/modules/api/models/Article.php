@@ -29,7 +29,7 @@ class Article extends ActiveRecord
         'title',
         'description',
         'text',
-        'status'
+        'status',
     ];
 
     public static function tableName(): string
@@ -47,7 +47,8 @@ class Article extends ActiveRecord
             'text',
             'created_at',
             'updated_at',
-            'category_id'
+            'category_id',
+            'status',
         ];
     }
 

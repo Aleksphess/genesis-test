@@ -28,17 +28,22 @@
     "psr/log": "^1.0",
     "tebazil/yii2-db-seeder": "^0.0.0",
     "vlucas/phpdotenv": "^5.0",
-    "yiisoft/yii2": "^2.0.31"
+    "yiisoft/yii2": "^2.0.31",
+    "ext-json": "*"
   },
   "require-dev": {
+    "codeception/codeception": "^4.0",
+    "codeception/module-asserts": "^1.2",
+    "codeception/module-filesystem": "^1.0",
+    "codeception/module-phpbrowser": "^1.0",
+    "codeception/module-rest": "^1.2",
     "phpunit/phpunit": "8.3",
     "yiisoft/yii2-bootstrap": "^2.0.0",
-    "yiisoft/yii2-jui": "^2.0.0",
-    "yiisoft/yii2-debug": "^2.0.0",
-    "yiisoft/yii2-gii": "^2.0.0",
     "yiisoft/yii2-codeception": "^2.0.0",
+    "yiisoft/yii2-debug": "^2.0.0",
     "yiisoft/yii2-faker": "^2.0.0",
-    "codeception/codeception": "^4.0"
+    "yiisoft/yii2-gii": "^2.0.0",
+    "yiisoft/yii2-jui": "^2.0.0"
   },
   "config": {
     "process-timeout": 1800,

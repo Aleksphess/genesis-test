@@ -1,0 +1,11 @@
+class_name: FunctionalTester
+modules:
+    enabled:
+      - Filesystem
+      #- Yii2
+      - PhpBrowser
+      - REST
+      - Asserts
+    config:
+      Yii2:
+         configFile: '../config/api/acceptance.php'

@@ -8,6 +8,11 @@ use  api\modules\api\models\Article as BaseArticle;
 
 class Article extends BaseArticle
 {
+    public function fields()
+    {
+        return $this->attributes();
+    }
+
     public function extraFields(): array
     {
         return [

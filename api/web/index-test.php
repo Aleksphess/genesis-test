@@ -11,10 +11,11 @@ require(__DIR__ . '/../../tests/codeception/api/_bootstrap.php');
 
 // Environment
 require(__DIR__ . '/../config/env.php');
-
 // Bootstrap application
 require(__DIR__ . '/../config/bootstrap.php');
-
-$config = require(__DIR__ . '/../../tests/codeception/config/api/functional.php');
+$config = \yii\helpers\ArrayHelper::merge(
+    require(__DIR__ . '/../config/web.php'),
+    require(__DIR__ . '/../../tests/codeception/config/functional.php')
+);
 
 (new yii\web\Application($config))->run();
