@@ -11,12 +11,12 @@ class m200629_082527_create_articles_and_categories_table extends Migration
             [
                 'id' => $this->primaryKey(),
                 'title' => $this->string(255)->defaultValue(''),
-                'description' => $this->text()->defaultValue(''),
-                'text' => $this->text()->defaultValue(''),
+                'description' => $this->text(),
+                'text' => $this->text(),
                 'alias' => $this->string(100)->unique()->notNull(),
-                'created_at' => $this->timestamp(),
-                'updated_at' => $this->timestamp(),
-                'articles_counter' => $this->integer()->defaultValue(0),
+                'created_at' => $this->dateTime(),
+                'updated_at' => $this->dateTime(),
+                'articles_counter' => $this->integer(),
             ]
         );
 
@@ -29,11 +29,11 @@ class m200629_082527_create_articles_and_categories_table extends Migration
             [
                 'id' => $this->primaryKey(),
                 'title' => $this->string(255)->defaultValue(''),
-                'description' => $this->text()->defaultValue(''),
-                'text' => $this->text()->defaultValue(''),
+                'description' => $this->text(),
+                'text' => $this->text(),
                 'alias' => $this->string(100)->unique()->notNull(),
-                'created_at' => $this->timestamp(),
-                'updated_at' => $this->timestamp(),
+                'created_at' => $this->dateTime(),
+                'updated_at' => $this->dateTime(),
                 'category_id' => $this->integer()->notNull(),
             ]
         );

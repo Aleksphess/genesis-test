@@ -1,0 +1,48 @@
+version: '2'
+services:
+  memcached:
+    image: memcached:1.4
+    ports:
+      - "11212:11211"
+
+  data:
+    image: busybox
+    volumes:
+      - ./misc/data:/var/lib/mysql
+
+  mysql:
+    build: ./mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: genesis
+      MYSQL_USER: root
+      MYSQL_PASSWORD: pass
+    ports:
+      - "13306:3306"
+    volumes_from:
+      - data
+    container_name: mysql
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../:/var/www/html
+    links:
+      - web
+    container_name: nginx
+
+  web:
+    build: ./php-fpm74
+    volumes:
+      - ../:/var/www/html
+    links:
+      - mysql
+    environment:
+      DATABASE_HOST: 'mysql'
+      DATABASE_NAME: 'genesis'
+      DATABASE_USER: 'root'
+      DATABASE_PASSWORD: 'pass'
+    container_name: web
