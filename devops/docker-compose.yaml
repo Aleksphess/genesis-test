@@ -11,7 +11,7 @@ services:
     build: ./mysql
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_USER: root
+      MYSQL_USER: genesis
       MYSQL_PASSWORD: pass
     ports:
       - "13306:3306"
