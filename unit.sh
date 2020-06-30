@@ -1,4 +1,3 @@
 #!/bin/bash
 
-cd tests/codeception/api
-../../../vendor/bin/codecept run unit $*  -d -vvv
+docker exec -it web sh -c "cd tests/codeception/api && ../../../vendor/bin/codecept run unit $*  -d -vvv"
