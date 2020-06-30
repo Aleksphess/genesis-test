@@ -7,22 +7,14 @@ services:
     networks:
       - test-network
 
-  data:
-    image: busybox
-    volumes:
-      - ./misc/data:/var/lib/mysql
-
   mysql:
     build: ./mysql
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: genesis
       MYSQL_USER: root
       MYSQL_PASSWORD: pass
     ports:
       - "13306:3306"
-    volumes_from:
-      - data
     volumes:
       - ./mysql:/docker-entrypoint-initdb.d
     container_name: mysql
