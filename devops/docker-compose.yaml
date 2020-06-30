@@ -33,6 +33,11 @@ services:
     links:
       - web
     container_name: nginx
+    networks:
+      test-network:
+        aliases:
+          - genesis.loc
+          - genesis-test.loc
 
   web:
     build: ./php-fpm74
@@ -46,3 +51,16 @@ services:
       DATABASE_USER: 'root'
       DATABASE_PASSWORD: 'pass'
     container_name: web
+    networks:
+      test-network:
+        aliases:
+          - genesis.loc
+          - genesis-test.loc
+
+networks:
+  test-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28

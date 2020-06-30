@@ -3,7 +3,7 @@
 modules:
   config:
     PhpBrowser:
-      url: 'http://genesis-test.loc:8080'
+      url: 'http://genesis-test.loc'
     REST:
       depends: PhpBrowser
-      url: 'http://genesis-test.loc:8080/api'
+      url: 'http://genesis-test.loc/api'
